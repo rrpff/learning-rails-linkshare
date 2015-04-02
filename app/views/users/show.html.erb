@@ -1,0 +1,16 @@
+<div class="page-header">
+    <h1>
+        <%= format_username(@user) %>
+        <small>User for <%= time_ago_in_words(@user.created_at) %></small>
+    </h1>
+</div>
+
+<h3>Recent links</h3>
+<div class="list-group">
+    <%= render latest @user.links, 10 %>
+</div>
+
+<h3>Recent comments</h3>
+<div class="list-group">
+    <%= render latest @user.comments, 10 %>
+</div>

@@ -1,0 +1,11 @@
+<ul class="metadata link-metadata">
+    <li class="time posted" title="<%= link.created_at %>">
+        <%= time_ago_in_words(link.created_at) %> ago
+    </li>
+
+    <% if not link.comments.empty? %>
+        <li class="time last-comment" title="<%= link.updated_at %>">
+            last comment <%= time_ago_in_words(link.comments.last.updated_at) %> ago
+        </li>
+    <% end %>
+</ul>

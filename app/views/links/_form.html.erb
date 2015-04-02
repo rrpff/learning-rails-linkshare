@@ -1,0 +1,26 @@
+<% if user_signed_in? %>
+
+    <%= form_for @link do |f| %>
+
+        <p>
+            <%= f.label :url %>
+            <%= f.text_field :url, autofocus: true %>
+        </p>
+
+        <p>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+        </p>
+
+        <p>
+            <%= f.submit %>
+        </p>
+
+    <% end %>
+
+<% else %>
+
+    <span><%= link_to 'Log in', new_user_session_path %> or
+    <%= link_to 'sign up', new_user_registration_path %> to post links.</span>
+
+<% end %>

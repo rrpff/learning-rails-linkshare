@@ -1,0 +1,20 @@
+<ul class="metadata comment-metadata">
+    <li class="time posted" title="<%= @comment.created_at %>">
+        <%= time_ago_in_words(@comment.created_at) %> ago
+    </li>
+
+    <% if @comment.updated_at != @comment.created_at %>
+        <li class="time updated" title="<%= @comment.updated_at %>">
+            updated <%= time_ago_in_words(@comment.updated_at) %> ago
+        </li>
+    <% end %>
+
+    <% if @comment.user.username === current_user.username %>
+        <li class='delete'>
+            <%= link_to 'delete', [@comment.link, @comment],
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+             %>
+         </li>
+    <% end %>
+</ul>

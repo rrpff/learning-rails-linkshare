@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+
+    <%= form_for [@link, @link.comments.build] do |f| %>
+
+        <p>
+            <%= f.label :body %><br />
+            <%= f.text_area :body %>
+        </p>
+
+        <p>
+            <%= f.submit %>
+        </p>
+
+    <% end %>
+
+<% else %>
+
+    <span>You must <%= link_to 'log in', new_user_session_path %> or
+    <%= link_to 'sign up', new_user_registration_path %> to comment on posts.</span>
+
+<% end %>

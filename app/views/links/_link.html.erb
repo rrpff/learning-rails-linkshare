@@ -1,0 +1,13 @@
+<div class="list-group-item">
+
+    <strong><%= link.title %></strong>
+    <%= link_to prettify_url(link.url), link.url, class: :url %>
+
+    <%= link_to pluralize(link.comments.length, 'comment'),
+        link_path(link) + '#comments',
+        class: 'badge'
+    %>
+
+    <%= render partial: 'links/metadata', locals: { link: link } %>
+
+</div>

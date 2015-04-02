@@ -1,0 +1,19 @@
+<% content_for :title, 'Home' %>
+
+<div class="page-header">
+    <h1>
+        Linkshare
+        <small>a reddit clone thing</small>
+    </h1>
+</div>
+
+<section class="new-link">
+    <h3>Post a new link</h3>
+    <%= render 'form' %>
+</section>
+
+<% if @links.length > 0 %>
+    <%= render @links %>
+<% else %>
+    There are no links yet. <%= link_to 'Post one.', new_link_path %>
+<% end %>

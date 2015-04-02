@@ -1,0 +1,10 @@
+<div class="list-group-item">
+
+    <% @comment = comment %>
+    <%= format_username(@comment.user) %>
+
+    <section><%= @comment.body %></section>
+
+    <%= render 'comments/metadata' %>
+
+</div>

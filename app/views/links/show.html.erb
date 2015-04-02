@@ -1,0 +1,16 @@
+<% content_for :title, @link.title %>
+
+<article>
+    <h1><%= @link.title %></h1>
+    <h3><%= link_to @link.url, @link.url %></h3>
+
+    <h3>
+        <a name="comments" class="anchor"></a>
+        <%= pluralize @link.comments.length, 'Comment' %>
+    </h3>
+
+    <%= render @link.comments %>
+
+    <h3>Add a comment</h3>
+    <%= render 'comments/form' %>
+</article>
