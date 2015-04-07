@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class LinksController < ApplicationController
 
     before_action :authenticate_user!,
@@ -13,6 +15,9 @@ class LinksController < ApplicationController
 
     def show
         @link = Link.find params[:id]
+
+        # Extract article from webpage
+        @link_content = extract_content @link.url
     end
 
     def new
@@ -56,6 +61,16 @@ class LinksController < ApplicationController
         def link_params
             params.require(:link)
                 .permit(:title, :url)
+        end
+
+        def extract_content(url)
+            html = open(url).read
+            extracted = Readability::Document.new html,
+                tags: %w(div a p h1 h2 h3 h4 h5 h6 hr img pre code ul li ol blockquote em strong),
+                attributes: %w(src href id),
+                remove_empty_nodes: false
+
+            extracted.content
         end
 
 end

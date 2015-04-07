@@ -5,4 +5,11 @@ module ApplicationHelper
             .limit(limit)
     end
 
+    def page_header(title, subtitle=nil)
+        content_for :title, title
+        small = subtitle ? " <small>#{subtitle}</small>" : ""
+
+        "<div class='page-header'><h1>#{title + small}</h1></div>"
+    end
+
 end

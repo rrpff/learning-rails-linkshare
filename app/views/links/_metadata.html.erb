@@ -1,11 +1,23 @@
 <ul class="metadata link-metadata">
     <li class="time posted" title="<%= link.created_at %>">
-        <%= time_ago_in_words(link.created_at) %> ago
+        posted by <%= link_to link.user.username, link.user %> <span class="time posted"><%= time_ago_in_words(link.created_at) %> ago</span>
     </li>
 
     <% if not link.comments.empty? %>
         <li class="time last-comment" title="<%= link.updated_at %>">
             last comment <%= time_ago_in_words(link.comments.last.updated_at) %> ago
+        </li>
+    <% end %>
+
+    <% if link.user === current_user %>
+        <li>
+            <%= link_to 'delete', link,
+                method: :delete,
+                data: {
+                    confirm: "Are you sure you want to delete '#{link.title}'?"
+                },
+                class: :delete
+             %>
         </li>
     <% end %>
 </ul>

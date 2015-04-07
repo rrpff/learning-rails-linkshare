@@ -1,8 +1,9 @@
-<% content_for :title, @link.title %>
-
 <article>
-    <h1><%= @link.title %></h1>
-    <h3><%= link_to @link.url, @link.url %></h3>
+    <%= page_header(@link.title, link_to(prettify_url(@link.url), @link.url)).html_safe %>
+
+    <section class="content">
+        <%= @link_content.html_safe %>
+    </section>
 
     <h3>
         <a name="comments" class="anchor"></a>

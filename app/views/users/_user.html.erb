@@ -1,0 +1,11 @@
+<div class="list-group-item">
+    <strong><%= format_username(user) %></strong>
+    <ul class="metadata">
+        <li>
+            <%= link_to pluralize(user.links.length, 'link'), user_path(user) + '#links' %>
+        </li>
+        <li>
+            <%= link_to pluralize(user.comments.length, 'comment'), user_path(user) + '#comments' %>
+        </li>
+    </ul>
+</div>

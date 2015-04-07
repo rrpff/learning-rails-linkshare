@@ -5,12 +5,18 @@
     </h1>
 </div>
 
-<h3>Recent links</h3>
+<h3>
+    <a name="links" class="anchor"></a>
+    Recent links
+</h3>
 <div class="list-group">
     <%= render latest @user.links, 10 %>
 </div>
 
-<h3>Recent comments</h3>
+<h3>
+    <a name="comments" class="anchor"></a>
+    Recent comments
+</h3>
 <div class="list-group">
     <%= render latest @user.comments, 10 %>
 </div>
